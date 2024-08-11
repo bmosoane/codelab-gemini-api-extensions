@@ -67,8 +67,7 @@ const ChatPage = () => {
       (snapshot) => {
         const messages = snapshot.docs.map((doc) => ({
           id: doc.id,
-          // TODO: 2. Replace code next line with this:
-          // ...prepareMessage(doc.data()),
+          ...prepareMessage(doc.data()),
           ...doc.data(),
         }));
         console.log(
@@ -88,9 +87,7 @@ const ChatPage = () => {
     setMessages((prev) => [...prev, { prompt: userMsg }]);
     // Send a message to Gemini Extension.
     const newMessageRef = await addDoc(messagesCollection, {
-      // TODO: 1. Replace code next line with this:
-      // prompt: preparePrompt(userMsg, messages),
-      prompt: userMsg,
+      prompt: preparePrompt(userMsg, messages),
     });
     console.log("New message added with ID: ", newMessageRef.id);
   };

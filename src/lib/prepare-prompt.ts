@@ -44,7 +44,5 @@ export const preparePrompt = (userMsg: string, history: MessageData[]) => {
     return prepareFirstPrompt(userMsg);
   }
 
-  return `Current time: ${new Date().toISOString()}
----
-${userMsg}`;
+  return userMsg;
 };
